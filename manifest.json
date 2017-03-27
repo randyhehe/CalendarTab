@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "CalendarTab",
+  "description": "View all your Google Calendar events from your new tab.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2FS9HCAl8xobR+bpPMR34ZEpW8F25mfSVORERjXmsiFy0yupmn5XUS5v+8dI9sc2t6SKAMGfnRfPDCK5+Xy2Dh/mv3hjNi/3mD1C3R76IHstXrO/fkV+GOd90sSTQYNaJ3fwyr3MRWGcQx8ZY3j19t+5b/V54ynmL3TsgbnO2yRQgB3zl+u4a0H7TU/izsrHWiCY1Qn/ujnpOdx4NMp7kuoElgyLGJqk423kMmuW1nzkBtrjK26nTKSDV1X2EjYdkMGTC08/iBAhaAWcDjh2M2j30MS4BnQpx6rzkvT6dJCFoKtwF1gcZd4eXBzgD5qJ0vnlha3otRmAKK+qcUoOmwIDAQAB",
+  "version": "0.0.1",
+  "browser_action": {"default_icon": "icon.png"},
+  "icons": {"16": "icon.png", "48": "icon.png", "128": "icon.png"},
+  "chrome_url_overrides": {"newtab": "index.html"},
+  "content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
+  "permissions": ["activeTab", "storage", "identity", "https://ajax.googleapis.com/", "https://apis.google.com/*"],
+  "oauth2": {
+    "client_id": "950666341880-86k0ii6u4ucfaurua7rstn9ahcoajh9u.apps.googleusercontent.com",
+    "scopes": [
+        "https://www.googleapis.com/auth/calendar"
+    ]
+  }
+}

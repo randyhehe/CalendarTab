@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CalendarTab</title>
+  <!-- may not be needed -->
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div id="bg-image">
+            <div class="row">
+                <!-- Unauthorized user UI -->
+                <div id="auth-msg" class="vertical-align" style="display: none">
+                    <div>
+                        <h1 id="auth-header" class="col-xs-12 col-sm-10 offset-sm-1 text-xs-center">Welcome to CalendarTab</h1>
+                        <h2 id="auth-desc" class="col-xs-12 col-sm-8 offset-sm-2 text-xs-center">To get started, authorize your account to work with this extension and all your calendars and associated events from your Google Calendar will be automatically synchronized.</h2>
+                        <button id="auth-btn" class="btn btn-primary col-xs-4 offset-xs-4 col-lg-2 offset-lg-5">Authorize</button>
+                        <h2 id="auth-note" class="col-xs-12 col-sm-8 offset-sm-2 text-xs-center">Note: This extension uses the account currently logged into your Google Chrome Browser.</h2>
+                    </div>
+                </div>
+                <!-- Authorized user UI -->
+                <div id="main-ui">
+                    <div id="schedule" class="col-xs-10 offset-xs-1 offset-md-0 offset-lg-1 col-lg-6 col-md-6"style="display:none">
+                        <!-- Header containing text and buttons -->
+                        <h1 class="text-xs-center">Upcoming Events
+                            <small>
+                            <!-- Button group containing time and calendar button groups -->
+                            <div id="time-cal-btn-group" class="btn-group">
+                                <!--Time button dropdown group -->
+                                <div id="time-dropdown-group" class="btn-group">
+                                    <button id="time-btn" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        All
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a id="day-btn" class="dropdown-item" href="#">Day</a>
+                                        <a id="week-btn" class="dropdown-item" href="#">Week</a>
+                                        <a id="month-btn" class="dropdown-item" href="#">Month</a>
+                                        <a id="all-btn" class="dropdown-item" href="#">All</a>
+                                    </div>
+                                </div>
+                                <!-- Calendar button dropdown group -->
+                                <div id="cal-dropdown-group" class="btn-group">
+                                    <button id="cal-btn" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Calendars
+                                    </button>
+                                    <div id="cal-dropdown-items" class="dropdown-menu">
+                                    </div>
+                                </div>
+                            </div>
+                            </small>
+                        </h1>
+                        <!-- List containing all events populated here -->
+                        <ul id="sched-list" class="list-group">
+                        </ul>
+                    </div>
+                    <div class="calendar col-lg-4 col-md-6 hidden-sm-down unselectable" style="display:none">
+                        <header>
+                            <h2 id="month-header"></h2>
+                        </header>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Sun</td>
+                                    <td>Mon</td>
+                                    <td>Tue</td>
+                                    <td>Wed</td>
+                                    <td>Thu</td>
+                                    <td>Fri</td>
+                                    <td>Sat</td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                                <tr id="row-0">
+                                    <td class="col-0"></td>
+                                    <td class="col-1"></td>
+                                    <td class="col-2"></td>
+                                    <td class="col-3"></td>
+                                    <td class="col-4"></td>
+                                    <td class="col-5"></td>
+                                    <td class="col-6"></td>
+                                </tr>
+                                <tr id="row-1">
+                                    <td class="col-0"></td>
+                                    <td class="col-1"></td>
+                                    <td class="col-2"></td>
+                                    <td class="col-3"></td>
+                                    <td class="col-4"></td>
+                                    <td class="col-5"></td>
+                                    <td class="col-6"></td>
+                                </tr>
+                                <tr id="row-2">
+                                    <td class="col-0"></td>
+                                    <td class="col-1"></td>
+                                    <td class="col-2"></td>
+                                    <td class="col-3"></td>
+                                    <td class="col-4"></td>
+                                    <td class="col-5"></td>
+                                    <td class="col-6"></td>
+                                </tr>
+                                <tr id="row-3">
+                                    <td class="col-0"></td>
+                                    <td class="col-1"></td>
+                                    <td class="col-2"></td>
+                                    <td class="col-3"></td>
+                                    <td class="col-4"></td>
+                                    <td class="col-5"></td>
+                                    <td class="col-6"></td>
+                                </tr>
+                                <tr id="row-4">
+                                    <td class="col-0"></td>
+                                    <td class="col-1"></td>
+                                    <td class="col-2"></td>
+                                    <td class="col-3"></td>
+                                    <td class="col-4"></td>
+                                    <td class="col-5"></td>
+                                    <td class="col-6"></td>
+                                </tr>
+                                <tr id="row-5">
+                                    <td class="col-0"></td>
+                                    <td class="col-1"></td>
+                                    <td class="col-2"></td>
+                                    <td class="col-3"></td>
+                                    <td class="col-4"></td>
+                                    <td class="col-5"></td>
+                                    <td class="col-6"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="notes" class="col-lg-4 col-md-6 hidden-sm-down" style="display:none">
+                        <h4 class="text-xs-center">Notes and Reminders &nbsp;
+                            <button id="add-note-btn" type="button" class="btn btn-primary btn-sm">&nbsp;Add&nbsp;</button>
+                        </h4>
+                        <ul id="notes-list" class="list-group">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="index.bundle.js"></script>
+</body>
+</html>
